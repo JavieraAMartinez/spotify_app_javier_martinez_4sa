@@ -1,16 +1,23 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify_app_javier_martinez_4sa/core/configs/assets/app_vectors.dart';
+import 'package:spotify_app_javier_martinez_4sa/main.dart';
+import 'package:spotify_app_javier_martinez_4sa/presentation/auth/pages/signup_or_siginin.dart';
+import 'package:spotify_app_javier_martinez_4sa/presentation/choose_mode/bloc/theme_cubit.dart';
 
 import '../../../common/Widgets/button/basic_app_button.dart';
 import '../../../core/configs/theme/app_colors.dart';
 
-class ChooseMode extends StatelessWidget {
-  const ChooseMode({super.key});
+class ChooseModePage extends StatelessWidget {
+  const ChooseModePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.lightBackground,
       body: Stack(
         children: [
           Container(
@@ -18,60 +25,9 @@ class ChooseMode extends StatelessWidget {
             decoration: const BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: AssetImage("assets/images/choose_mode_bg.png"))),
-            child: Column(
-              children: [
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: SvgPicture.asset(AppVectors.logo),
-                ),
-                const Spacer(),
-                const Text(
-                  "Elegir Modo",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 18),
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 80,
-                      width: 80,
-                      decoration: BoxDecoration(
-                          color: Colors.white, shape: BoxShape.circle),
-                    ),
-                    SizedBox(
-                      width: 40,
-                    ),
-                    Container(
-                      height: 80,
-                      width: 80,
-                      decoration: BoxDecoration(
-                          color: Colors.white, shape: BoxShape.circle),
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-                BasicAppButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                const ChooseMode()));
-                  },
-                  title: "Empezar",
-                  height: 80,
-                )
-              ],
-            ),
+                    image: AssetImage(
+                      "assets/images/choose_mode_bg.png",
+                    ))),
           ),
           Container(
             color: Colors.black.withOpacity(0.15),
@@ -84,6 +40,113 @@ class ChooseMode extends StatelessWidget {
                   alignment: Alignment.topCenter,
                   child: SvgPicture.asset(AppVectors.logo),
                 ),
+                const Spacer(),
+                const Text(
+                  'Choose Mode',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 18),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            context
+                                .read<ThemeCubit>()
+                                .updateTheme(ThemeMode.dark);
+                          },
+                          child: ClipOval(
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                              child: Container(
+                                height: 80,
+                                width: 80,
+                                decoration: BoxDecoration(
+                                    color: const Color(0xff30393C)
+                                        .withOpacity(0.5),
+                                    shape: BoxShape.circle),
+                                child: SvgPicture.asset(
+                                  AppVectors.moon,
+                                  fit: BoxFit.none,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        const Text(
+                          'Dark Mode',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 17,
+                              color: AppColors.grey),
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 40,
+                    ),
+                    Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            context
+                                .read<ThemeCubit>()
+                                .updateTheme(ThemeMode.light);
+                          },
+                          child: ClipOval(
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                              child: Container(
+                                height: 80,
+                                width: 80,
+                                decoration: BoxDecoration(
+                                    color: const Color(0xff30393C)
+                                        .withOpacity(0.5),
+                                    shape: BoxShape.circle),
+                                child: SvgPicture.asset(
+                                  AppVectors.sun,
+                                  fit: BoxFit.none,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        const Text(
+                          'Light Mode',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 17,
+                              color: AppColors.grey),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                BasicAppButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  const SignupOrSigininPage()));
+                    },
+                    title: 'Continue')
               ],
             ),
           ),

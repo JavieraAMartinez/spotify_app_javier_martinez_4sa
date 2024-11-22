@@ -5,10 +5,7 @@ class BasicAppButton extends StatelessWidget {
   final String title;
   final double? height;
   const BasicAppButton(
-      {required this.onPressed,
-      required this.title,
-      required this.height,
-      super.key});
+      {required this.onPressed, required this.title, this.height, super.key});
 
   @override
   Widget build(BuildContext context) {

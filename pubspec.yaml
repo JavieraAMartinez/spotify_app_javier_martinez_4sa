@@ -11,6 +11,9 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   flutter_svg:
+  flutter_bloc:
+  hydrated_bloc:
+  path_provider:
 
 dev_dependencies:
   flutter_test:
@@ -26,6 +29,7 @@ flutter:
     - assets/images/intro_bg.png
     - assets/images/choose_mode_bg.png
     - assets/vectors/
+    - assets/images/auth_bg.png
 
   fonts:
     - family: Satoshi

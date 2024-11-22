@@ -54,7 +54,7 @@ class GetStartedPage extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (BuildContext context) =>
-                                const ChooseMode()));
+                                const ChooseModePage()));
                   },
                   title: "Empezar",
                   height: 80,
@@ -101,7 +101,7 @@ class GetStartedPage extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (BuildContext context) =>
-                                const ChooseMode()));
+                                const ChooseModePage()));
                   },
                   title: "Empezar",
                   height: 80,
