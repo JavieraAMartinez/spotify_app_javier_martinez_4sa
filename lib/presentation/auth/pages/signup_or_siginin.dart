@@ -6,6 +6,8 @@ import 'package:spotify_app_javier_martinez_4sa/common/Widgets/button/basic_app_
 import 'package:spotify_app_javier_martinez_4sa/common/helpers/is_dark_mode.dart';
 import 'package:spotify_app_javier_martinez_4sa/core/configs/assets/app_vectors.dart';
 import 'package:spotify_app_javier_martinez_4sa/core/configs/theme/app_colors.dart';
+import 'package:spotify_app_javier_martinez_4sa/presentation/auth/pages/signin.dart';
+import 'package:spotify_app_javier_martinez_4sa/presentation/auth/pages/signup.dart';
 
 class SignupOrSigininPage extends StatelessWidget {
   const SignupOrSigininPage({super.key});
@@ -63,7 +65,14 @@ class SignupOrSigininPage extends StatelessWidget {
                         Expanded(
                           flex: 1,
                           child: BasicAppButton(
-                              onPressed: () {}, title: "Registrate"),
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            const SignupPage()));
+                              },
+                              title: "Registrate"),
                         ),
                         const SizedBox(
                           width: 20,
@@ -71,7 +80,13 @@ class SignupOrSigininPage extends StatelessWidget {
                         Expanded(
                           flex: 1,
                           child: TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            const SigninPage()));
+                              },
                               child: Text(
                                 "Iniciar Sesión",
                                 style: TextStyle(
