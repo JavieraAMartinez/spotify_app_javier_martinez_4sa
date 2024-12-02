@@ -19,6 +19,7 @@ dependencies:
   cloud_firestore: ^5.5.0
   get_it:
   dartz:
+  cached_network_image:
 
 dev_dependencies:
   flutter_test:
@@ -35,6 +36,8 @@ flutter:
     - assets/images/choose_mode_bg.png
     - assets/vectors/
     - assets/images/auth_bg.png
+    - assets/vectors/home_top_card.svg
+    - assets/images/home_artist.png
 
   fonts:
     - family: Satoshi

@@ -6,7 +6,7 @@ import 'package:spotify_app_javier_martinez_4sa/core/configs/assets/app_vectors.
 import 'package:spotify_app_javier_martinez_4sa/data/models/auth/create_user_req.dart';
 import 'package:spotify_app_javier_martinez_4sa/domain/usecases/auth/signup.dart';
 import 'package:spotify_app_javier_martinez_4sa/presentation/auth/pages/signin.dart';
-import 'package:spotify_app_javier_martinez_4sa/presentation/root/pages/root.dart';
+import 'package:spotify_app_javier_martinez_4sa/presentation/home/pages/home.dart';
 import 'package:spotify_app_javier_martinez_4sa/service_locator.dart';
 
 class SignupPage extends StatelessWidget {
@@ -65,7 +65,7 @@ class SignupPage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  const RootPage()),
+                                  const HomePage()),
                           (route) => false);
                     },
                   );
